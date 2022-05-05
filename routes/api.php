@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\OAuthController;
 
 /*
@@ -23,6 +24,7 @@ use App\Http\Controllers\Api\OAuthController;
  *                                                Protected Routes                                                    *
  **********************************************************************************************************************/
 
+Route::resource('events', EventController::class)->middleware('auth:sanctum');
 
 /**********************************************************************************************************************
  *                                                Public Routes                                                       *
