@@ -38,6 +38,18 @@ services:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
             timeout: 5s
+    phpmyadmin:
+        image: 'phpmyadmin:latest'
+        ports:
+            - '${FORWARD_PHPMYADMIN_PORT:-8080}:80'
+        environment:
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+        links:
+            - "mysql:db"
+        networks:
+            - sail
+        depends_on:
+            - mysql
 networks:
     sail:
         driver: bridge
