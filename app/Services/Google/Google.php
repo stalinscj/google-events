@@ -3,6 +3,7 @@
 namespace App\Services\Google;
 
 use Google\Service\Oauth2;
+use Google\Service\Calendar;
 
 class Google
 {
@@ -27,6 +28,7 @@ class Google
             Oauth2::USERINFO_PROFILE,
             Oauth2::USERINFO_EMAIL,
             Oauth2::OPENID,
+            Calendar::CALENDAR_EVENTS,
         ]);
 
         $client->setIncludeGrantedScopes(true);
